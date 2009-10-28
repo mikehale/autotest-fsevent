@@ -25,3 +25,8 @@ require 'newgem/tasks'
 Dir['tasks/**/*.rake'].each { |t| load t }
 
 task :default => [:spec]
+
+task :build do
+  `CFLAGS='-isysroot /Developer/SDKs/MacOSX10.5.sdk -mmacosx-version-min=10.5' gcc -framework CoreServices -o fsevent/darwin/fsevent_sleep fsevent/darwin/src/main.c`
+end
+
